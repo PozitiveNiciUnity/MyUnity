@@ -1,8 +1,10 @@
+﻿
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattonMenu : MonoBehaviour {
+public class BattonLogic : MonoBehaviour
+{
 
 
     public GameObject panelmain;
@@ -25,6 +27,8 @@ public class BattonMenu : MonoBehaviour {
 
     }
 
+  
+
 
     public void ShopClick()
     {
@@ -35,6 +39,8 @@ public class BattonMenu : MonoBehaviour {
         paneltaxipark.SetActive(false);
 
         NoMoney.SetActive(false);
+
+        
     }
 
     public void MainClick()

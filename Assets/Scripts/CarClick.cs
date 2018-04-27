@@ -2,42 +2,50 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.IO;
+using System;
 
-public class CarClick : MonoBehaviour {
 
-    public GameObject car;
+public class CarClick : MonoBehaviour
+{
+
+    public GameObject Car;
 
     public Text MoneyText;
 
-    public static int money = 0;
+    public static int Money = 0;
 
-    public static int moneyBonus = 0;
+    public static int MoneyBonus = 0;
 
-    public int MoneyBunusShopOne = 0;
+    public static int MoneyDPS = 1;
 
-    public Text Moneypertouch;
+    public Text MoneyDPSText;
 
-
-    public int moneydps;
-
-    public int moneyclickstandart = 1;
-
-
-
-
-
-
-
+    public int MoneyClickStandart = 1;
 
 
     //Заставляет двигаться во время нажатия
     public void DownPointer()
     {
-        car.GetComponent<RectTransform>().sizeDelta = new Vector2(564, 258);
+        Car.GetComponent<RectTransform>().sizeDelta = new Vector2(564, 258);
     }
 
 
+    private void Start()
+    {
+        Money = PlayerPrefs.GetInt("Money");
+        MoneyText.text = Money + "";
 
+        PlayerPrefs.GetInt("MoneyBonus", MoneyBonus);
+        MoneyBonus = PlayerPrefs.GetInt("MoneyBonus", MoneyBonus);
+
+        PlayerPrefs.GetInt("MoneyDPS", MoneyDPS);
+        MoneyDPS = PlayerPrefs.GetInt("MoneyDPS", MoneyDPS);
+
+
+
+
+    }
 
 
 
@@ -47,45 +55,39 @@ public class CarClick : MonoBehaviour {
     //Заставляет двигаться  после отпуска 
     public void UpPointer()
     {
-        car.GetComponent<RectTransform>().sizeDelta = new Vector2(613, 308);
+        Car.GetComponent<RectTransform>().sizeDelta = new Vector2(613, 308);
     }
-
-
-
-
-
-
 
 
     public void OnClick()
     {
 
-        money = money + 1 + moneyBonus;
-        MoneyText.text = money + " ";
+        Money = Money + MoneyBonus + 1;
+        MoneyText.text = Money + " ";
+
+        PlayerPrefs.SetInt("Money", Money);
+        PlayerPrefs.SetInt("MoneyBonus", MoneyBonus);
+        PlayerPrefs.SetInt("MoneyDPS", MoneyDPS);
+
     }
-
-
-
-
 
 
 
     public void Update()
     {
+        int MoneyDps = MoneyBonus + MoneyClickStandart;
+     
+        MoneyDPSText.text = "Монеток за клик " + MoneyDps;
 
-        int moneydps = moneyBonus + moneyclickstandart;
-        MoneyText.text = money + "";
-        Moneypertouch.text = "Монеток за клик " + moneydps;
+        MoneyText.text = Money + "";
 
-
+        PlayerPrefs.SetInt("Money" , Money);
+        PlayerPrefs.SetInt("MoneyBonus", MoneyBonus);
+        PlayerPrefs.SetInt("MoneyDPS", MoneyDPS);
 
 
     }
 
+
+
 }
-    
-
-
-
-
-
