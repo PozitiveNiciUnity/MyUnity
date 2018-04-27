@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class TaxiParkMain : MonoBehaviour {
 
-
+    
 
     public Text TextFirstBuyPlace;
 
@@ -23,10 +23,12 @@ public class TaxiParkMain : MonoBehaviour {
 
     public GameObject NoMoney;
 
- 
+    public static int MultiplierCar1 = 10;
+
+    public static int herna;
 
 
-        public  void Start()
+    public  void Start()
         {
             TextFirstBuyPlace.text = "Купить место под новую машину  Стоимость : 10000";
 
@@ -39,14 +41,18 @@ public class TaxiParkMain : MonoBehaviour {
             CarPanel.SetActive(false);
 
             UpLvlBatton.SetActive(false);
+
+           
         }
 
+
+   
 
 
     
 
 
-
+   
 
 
 
@@ -57,7 +63,7 @@ public class TaxiParkMain : MonoBehaviour {
 
     public void FirstBuyPlace()
     {
-        if (CarClick.Money <= 100)
+        if (CarClick.Money < 100)
         {
             NoMoney.SetActive(true);
         }
@@ -82,7 +88,7 @@ public class TaxiParkMain : MonoBehaviour {
 
     public void FirstBuyCar()
     {
-        if (CarClick.Money <= 100)
+        if (CarClick.Money < 100)
         {
             NoMoney.SetActive(true);
         }
@@ -90,7 +96,8 @@ public class TaxiParkMain : MonoBehaviour {
         if (CarClick.Money >= 100)
         {
             CarClick.Money = CarClick.Money - 100;
-
+            
+            CarClick.PassiveMoneyPerSecond = CarClick.PassiveMoneyPerSecond + MultiplierCar1;
 
             BattonFirstByuPlace.SetActive(false);
 
@@ -99,9 +106,19 @@ public class TaxiParkMain : MonoBehaviour {
             CarPanel.SetActive(true);
 
             UpLvlBatton.SetActive(true);
+
+            herna = herna + MultiplierCar1;
+
+
+
         }
 
 
 
     }
+
+
+
+
+
 }

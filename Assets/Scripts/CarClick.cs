@@ -8,6 +8,10 @@ using System;
 
 public class CarClick : MonoBehaviour
 {
+   
+
+    public static int PassiveMoneyPerSecond = 0;
+
 
     public GameObject Car;
 
@@ -48,7 +52,7 @@ public class CarClick : MonoBehaviour
 
         SlideBonusValue = 1;
 
-
+    
     }
 
 
@@ -105,6 +109,8 @@ public class CarClick : MonoBehaviour
 
         MoneyText.text = Money + "";
 
+       
+
 
 
 
@@ -117,6 +123,7 @@ public class CarClick : MonoBehaviour
         }
 
 
+       
 
 
 
