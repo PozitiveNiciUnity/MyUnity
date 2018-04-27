@@ -11,6 +11,8 @@ public class CarClick : MonoBehaviour
 
     public GameObject Car;
 
+    public Slider SliderBonus;
+
     public Text MoneyText;
 
     public static int Money = 0;
@@ -23,7 +25,9 @@ public class CarClick : MonoBehaviour
 
     public int MoneyClickStandart = 1;
 
+    public int SlideBonusValue = 1;
 
+    public static int NitroBonus = 100;
     //Заставляет двигаться во время нажатия
     public void DownPointer()
     {
@@ -42,7 +46,7 @@ public class CarClick : MonoBehaviour
         PlayerPrefs.GetInt("MoneyDPS", MoneyDPS);
         MoneyDPS = PlayerPrefs.GetInt("MoneyDPS", MoneyDPS);
 
-
+        SlideBonusValue = 1;
 
 
     }
@@ -59,15 +63,35 @@ public class CarClick : MonoBehaviour
     }
 
 
+    
+
     public void OnClick()
     {
 
         Money = Money + MoneyBonus + 1;
+
         MoneyText.text = Money + " ";
+
+        SlideBonusValue++;
+
+
+        SliderBonus.value = (SlideBonusValue);
+
+
+
+
+
 
         PlayerPrefs.SetInt("Money", Money);
         PlayerPrefs.SetInt("MoneyBonus", MoneyBonus);
         PlayerPrefs.SetInt("MoneyDPS", MoneyDPS);
+
+
+
+
+
+
+
 
     }
 
@@ -80,6 +104,22 @@ public class CarClick : MonoBehaviour
         MoneyDPSText.text = "Монеток за клик " + MoneyDps;
 
         MoneyText.text = Money + "";
+
+
+
+
+        if (SlideBonusValue == 100)
+        {
+
+            Money = Money + NitroBonus;
+
+            SlideBonusValue = SlideBonusValue - 99;
+        }
+
+
+
+
+
 
         PlayerPrefs.SetInt("Money" , Money);
         PlayerPrefs.SetInt("MoneyBonus", MoneyBonus);

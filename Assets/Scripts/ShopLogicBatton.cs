@@ -13,24 +13,31 @@ public class ShopLogicBatton : MonoBehaviour
 
     public static int CostShop1 = 20;
 
-    public static int MultiplierShop1 = 3;
+    public static int MultiplierShop1 = 1;
 
     public  Text TextCost2;
 
-    public static int CostShop2 = 2000;
+    public static int CostShop2 = 4000;
 
-    public static int MultiplierShop2 = 20;
+    public static int MultiplierShop2 = 10;
 
 
     public Text TextCost3;
 
-    public static int CostShop3 = 500;
+    public static int CostShop3 = 100000;
 
-    public static int MultiplierShop3 = 100;
+    public static int MultiplierShop3 = 50;
 
 
+    public Text TextCost4;
 
-    // Use this for initialization
+    public static int CostShop4 = 50000;
+
+    public static int MultiplierShop4 = 2;
+
+
+  
+
     void Start()
     {
         PlayerPrefs.GetInt("CostShop1", CostShop1);
@@ -49,11 +56,20 @@ public class ShopLogicBatton : MonoBehaviour
         MultiplierShop2 = PlayerPrefs.GetInt("MultiplierShop2", MultiplierShop2);
 
 
+
         PlayerPrefs.GetInt("CostShop3", CostShop3);
         CostShop3 = PlayerPrefs.GetInt("CostShop3", CostShop3);
 
         PlayerPrefs.GetInt("MultiplierShop3", MultiplierShop3);
         MultiplierShop3 = PlayerPrefs.GetInt("MultiplierShop3", MultiplierShop3);
+
+
+
+        PlayerPrefs.GetInt("CostShop4", CostShop4);
+        CostShop4 = PlayerPrefs.GetInt("CostShop4", CostShop4);
+
+        PlayerPrefs.GetInt("MultiplierShop4", MultiplierShop4);
+        MultiplierShop4 = PlayerPrefs.GetInt("MultiplierShop4", MultiplierShop4);
 
 
 
@@ -68,12 +84,16 @@ public class ShopLogicBatton : MonoBehaviour
 
         TextCost3.text = ("Прибавится к клику " + "" + MultiplierShop3 + "\n" + "Стоимость :" + "" + CostShop3);
 
+        TextCost4.text = ("Удвоение прибыли с нитро x " + "" + MultiplierShop4 + "\n" + "Стоимость :" + "" + CostShop4);
+
+
+
+
     }
 
 
 
 
-    // Update is called once per frame
 
 
 
@@ -166,6 +186,33 @@ public class ShopLogicBatton : MonoBehaviour
             PlayerPrefs.SetInt("CostShop3", CostShop3);
 
             TextCost3.text = "Прибавится к клику " + "" + MultiplierShop3 + "\n" + "Стоимость :" + "" + CostShop3;
+        }
+
+
+
+    }
+
+
+    public void ShopBattonFour()
+    {
+        if (CarClick.Money <= CostShop4)
+        {
+            NoMoney.SetActive(true);
+        }
+
+        if (CarClick.Money >= CostShop4)
+        {
+            CarClick.NitroBonus = CarClick.NitroBonus * MultiplierShop4;
+
+            CarClick.Money = CarClick.Money - CostShop4;
+
+            CostShop4 = CostShop4 * 2;
+
+            PlayerPrefs.SetInt("MultiplierShop4", MultiplierShop4);
+
+            PlayerPrefs.SetInt("CostShop4", CostShop4);
+
+            TextCost4.text = "Удвоение прибыли с нитро " + "" + MultiplierShop4 + "\n" + "Стоимость :" + "" + CostShop4;
         }
 
 
