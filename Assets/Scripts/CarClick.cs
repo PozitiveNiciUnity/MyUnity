@@ -19,6 +19,8 @@ public class CarClick : MonoBehaviour
 
     public Text MoneyText;
 
+    public Text DPSMoneyText;
+
     public static int Money = 0;
 
     public static int MoneyBonus = 0;
@@ -44,11 +46,20 @@ public class CarClick : MonoBehaviour
         Money = PlayerPrefs.GetInt("Money");
         MoneyText.text = Money + "";
 
-        PlayerPrefs.GetInt("MoneyBonus", MoneyBonus);
-        MoneyBonus = PlayerPrefs.GetInt("MoneyBonus", MoneyBonus);
+        PlayerPrefs.GetInt("MoneyBonus");
+        MoneyBonus = PlayerPrefs.GetInt("MoneyBonus");
 
-        PlayerPrefs.GetInt("MoneyDPS", MoneyDPS);
-        MoneyDPS = PlayerPrefs.GetInt("MoneyDPS", MoneyDPS);
+        PlayerPrefs.GetInt("MoneyClickStandart");
+        MoneyClickStandart = PlayerPrefs.GetInt("MoneyClickStandart");
+
+       
+
+        
+
+        PlayerPrefs.GetInt("PassiveMoneyPerSecond");
+        PassiveMoneyPerSecond = PlayerPrefs.GetInt("PassiveMoneyPerSecond");
+
+   
 
         SlideBonusValue = 1;
 
@@ -88,9 +99,11 @@ public class CarClick : MonoBehaviour
 
         PlayerPrefs.SetInt("Money", Money);
         PlayerPrefs.SetInt("MoneyBonus", MoneyBonus);
-        PlayerPrefs.SetInt("MoneyDPS", MoneyDPS);
-
-
+        PlayerPrefs.SetInt("MoneyClickStandart", MoneyClickStandart);
+        
+    
+        PlayerPrefs.SetInt("PassiveMoneyPerSecond", PassiveMoneyPerSecond);
+       
 
 
 
@@ -109,7 +122,10 @@ public class CarClick : MonoBehaviour
 
         MoneyText.text = Money + "";
 
-       
+        DPSMoneyText.text = "Монеток в с. " + PassiveMoneyPerSecond;
+
+
+
 
 
 
@@ -130,8 +146,11 @@ public class CarClick : MonoBehaviour
 
         PlayerPrefs.SetInt("Money" , Money);
         PlayerPrefs.SetInt("MoneyBonus", MoneyBonus);
-        PlayerPrefs.SetInt("MoneyDPS", MoneyDPS);
-
+        PlayerPrefs.SetInt("MoneyClickStandart", MoneyClickStandart);
+       
+     
+        PlayerPrefs.SetInt("PassiveMoneyPerSecond", PassiveMoneyPerSecond);
+   
 
     }
 

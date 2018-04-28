@@ -1,8 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PassiveMoney : MonoBehaviour {
+
+
 
     public int a;
 
@@ -20,6 +23,11 @@ public class PassiveMoney : MonoBehaviour {
         a = CarClick.PassiveMoneyPerSecond;
 
         c = CarClick.Money;
+
+
+               
+
+       
     }
 
     public IEnumerator PassiveMoneyIE()
